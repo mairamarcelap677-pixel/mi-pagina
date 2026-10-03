@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo</title>
+    <link rel="stylesheet" href="../css/catalogo.css">
+</head>
+<body>
+    <header>
+      <a href="paginaprincipal.html" class="back-button">⬅️ Regresar a la página principal</a>
+      <nav>
+       
+       <h1 style="text-align: center;">CATALOGO</h1>
+       <hr>
+      <div id="openContainerName" style="text-align:center;font-size:1.2rem;margin-bottom:16px;color:#2a2a2a;"></div>
+      <div class="catalogo-layout">
+        <div class="grid-detalles">
+  <details>
+    <summary>malteada🍹</summary>
+    <div class="productos-grid">
+      <button type="button" class="producto-card">Malteada de Chocolate</button>
+      <button type="button" class="producto-card">Malteada de Vainilla</button>
+      <button type="button" class="producto-card">Malteada de Fresa</button>
+      <button type="button" class="producto-card">Malteada de Oreo</button>
+      <button type="button" class="producto-card">Malteada de Frutos Rojos</button>
+      <button type="button" class="producto-card">Malteada de Caramelo</button>
+      <button type="button" class="producto-card">Malteada de Café</button>
+      <button type="button" class="producto-card">Malteada de Almendra</button>
+      <button type="button" class="producto-card">Malteada de Mango</button>
+      <button type="button" class="producto-card">Malteada de Piña</button>
+      <button type="button" class="producto-card">Malteada de Coco</button>
+      <button type="button" class="producto-card">Malteada de Avellana</button>
+    </div>
+  </details>
+
+  <details>
+    <summary>gaseosas🥤</summary>
+    <div class="productos-grid">
+      <button type="button" class="producto-card">Coca-Cola</button>
+      <button type="button" class="producto-card">Pepsi</button>
+      <button type="button" class="producto-card">Fanta Naranja</button>
+      <button type="button" class="producto-card">Sprite</button>
+      <button type="button" class="producto-card">Seven Up</button>
+     
+    
+    </div>
+  </details>
+
+  <details>
+    <summary>Otros🧊☕</summary>
+    <div class="productos-grid">
+      <button type="button" class="producto-card">Limonada de Coco</button>
+      <button type="button" class="producto-card">Limonada de Cereza</button>
+      <button type="button" class="producto-card">Granizado de Café</button>
+      <button type="button" class="producto-card">Té Helado</button>
+     
+      <button type="button" class="producto-card">Smoothie</button>
+      <button type="button" class="producto-card">Espresso</button>
+     
+      <button type="button" class="producto-card">Horchata</button>
+      <button type="button" class="producto-card">Frappé</button>
+      <button type="button" class="producto-card">Churro</button>
+      <button type="button" class="producto-card">Brownie</button>
+      <button type="button" class="producto-card">Gelatina</button>
+    </div>
+  </details>
+</div>
+        <div class="preview-panel">
+          <h3>Vista previa</h3>
+          <img id="productoImagen" class="preview-image" src="../img/refrescantes.jpg" alt="Vista previa del producto">
+          <p id="productoTexto">Selecciona un producto</p>
+        </div>
+      </div>
+      </nav>
+    </header>
+
+<style>
+.grid-detalles {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  justify-items: center;
+  text-align: center;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.grid-detalles details {
+  width: 100%;
+  max-width: 300px;
+  background: #ffffffcc;
+  border-radius: 18px;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.grid-detalles details:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
+}
+
+.grid-detalles summary {
+  list-style: none;
+  padding: 14px 18px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+.grid-detalles summary:hover {
+  background: #fff5d9;
+}
+
+.grid-detalles details[open] summary {
+  background: #ffdca8;
+  color: #222;
+}
+
+.grid-detalles ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.3s ease, opacity 0.25s ease;
+}
+
+.grid-detalles details[open] ul {
+  max-height: 500px;
+  opacity: 1;
+}
+.grid-detalles li {
+  cursor: pointer;
+  padding: 6px 8px;
+  border-radius: 6px;
+}
+.grid-detalles li:hover {
+  background: #f0f0f0;
+}
+.grid-detalles li.selected {
+  background: #ffdca8;
+}
+.order-box {
+  display: none;
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(420px, calc(100% - 32px));
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid #ddd;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  border-radius: 12px;
+  padding: 12px 16px;
+  text-align: center;
+  z-index: 1000;
+}
+.order-box.show {
+  display: block;
+}
+.order-box button {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.order-box button:hover {
+  background: #0069d9;
+}
+
+  .back-button {
+    position: fixed;
+    top: 18px;
+    left: 18px;
+    z-index: 1100;
+    display: inline-block;
+    padding: 10px 16px;
+    background: rgba(255, 255, 255, 0.95);
+    color: #1a1a1a;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 999px;
+    border: 1px solid rgba(0, 0, 0, 0.14);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+    transition: transform 0.2s ease, background 0.2s ease;
+  }
+
+  .back-button:hover {
+    transform: translateY(-2px);
+    background: #ffffff;
+  }
+</style>
+
+    <div id="orderBox" class="order-box" aria-live="polite">
+  <div id="orderName"></div>
+  <div id="orderCount"></div>
+  <ul id="orderList" style="list-style:none;padding:0;margin:8px 0;"></ul>
+  <button id="orderBtn">Ordenar</button>
+</div>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const cards = document.querySelectorAll('.producto-card');
+      const detailsElements = document.querySelectorAll('.grid-detalles details');
+      const openContainerName = document.getElementById('openContainerName');
+      const orderBox = document.getElementById('orderBox');
+      const orderName = document.getElementById('orderName');
+      const orderCount = document.getElementById('orderCount');
+      const orderList = document.getElementById('orderList');
+      const orderBtn = document.getElementById('orderBtn');
+      const previewImage = document.getElementById('productoImagen');
+      const previewText = document.getElementById('productoTexto');
+      const selectedSet = new Set();
+
+      const imagenesPorProducto = {
+        'Malteada de Chocolate': '../img/chocolate.jpg',
+        'Malteada de Vainilla': '../img/vainilla.jpg',
+        'Malteada de Fresa': '../img/indulgente fresa malteada deleite con azotado crema Adición en transparente espacio.jpg',
+        'Malteada de Oreo': '../img/oreo.jpg',
+        'Malteada de Frutos Rojos': '../img/frutos rojos.jpg',
+        'Malteada de Caramelo': '../img/caramelo.jpg',
+        'Malteada de Café': '../img/cafe.jpg',
+        'Malteada de Almendra': '../img/almendra.jpg',
+        'Malteada de Mango': '../img/mango.jpg',
+        'Malteada de Piña': '../img/piña.jpg',
+        'Malteada de Coco': '../img/coco.jpg',
+        'Malteada de Avellana': '../img/avellana.jpg',
+        'Coca-Cola': '../img/cocacola.jpg',
+        'Pepsi': '../img/pepsi.jpg',
+        'Fanta Naranja': '../img/fanta.jpg',
+        'Sprite': '../img/sprite.jpg',
+        'Seven Up': '../img/sevenup.jpg',
+        'Limonada de Coco': '../img/limonadacoco.jpg',
+        'Limonada de Cereza': '../img/limonadacereza.jpg',
+        'Granizado de Café': '../img/granizadocafe.jpg',
+        'Té Helado': '../img/tehelado.jpg',
+      
+        'Smoothie': '../img/smothis.jpg',
+        'Espresso': '../img/expresso.jpg',
+       
+        'Horchata': '../img/horchata.jpg',
+        'Frappé': '../img/frappe.jpg',
+        'Churro': '../img/churros.jpg',
+        'Brownie': '../img/brownie.jpg',
+        'Gelatina': '../img/gelatina.jpg'
+      };
+
+      function mostrarPreview(nombre) {
+        const ruta = imagenesPorProducto[nombre] || '../img/refrescantes.jpg';
+        previewImage.src = ruta;
+        previewImage.alt = nombre;
+        previewText.textContent = nombre;
+      }
+
+      function limpiarPreview() {
+        previewImage.src = '../img/refrescantes.jpg';
+        previewImage.alt = 'Vista previa del producto';
+        previewText.textContent = 'Selecciona un producto';
+      }
+
+      function refreshOrderBox() {
+        const items = Array.from(selectedSet);
+        if (items.length === 0) {
+          orderBox.classList.remove('show');
+          orderName.textContent = '';
+          orderCount.textContent = '';
+          orderList.innerHTML = '';
+          return;
+        }
+        orderBox.classList.add('show');
+        orderName.textContent = 'Productos seleccionados:';
+        orderCount.textContent = 'Total: ' + items.length;
+        orderList.innerHTML = items.map(i => '<li>' + i + '</li>').join('');
+      }
+
+      function updateOpenContainerName() {
+        const openDetail = document.querySelector('.grid-detalles details[open] summary');
+        openContainerName.textContent = openDetail ? 'Abierto: ' + openDetail.textContent.trim() : '';
+      }
+
+      detailsElements.forEach(detail => {
+        detail.addEventListener('toggle', updateOpenContainerName);
+      });
+
+      cards.forEach(card => {
+        card.addEventListener('click', function () {
+          const name = this.textContent.trim();
+          const nowSelected = this.classList.toggle('selected');
+          if (nowSelected) {
+            selectedSet.add(name);
+            mostrarPreview(name);
+          } else {
+            selectedSet.delete(name);
+            if (selectedSet.size === 0) {
+              limpiarPreview();
+            } else {
+              mostrarPreview(Array.from(selectedSet)[selectedSet.size - 1]);
+            }
+          }
+          refreshOrderBox();
+        });
+      });
+
+      updateOpenContainerName();
+
+      orderBtn.addEventListener('click', function () {
+        const items = Array.from(selectedSet);
+        if (items.length === 0) return;
+        alert('Has elegido ordenar ' + items.length + ' producto(s):\n' + items.join('\n'));
+      });
+    });
+    </script>
