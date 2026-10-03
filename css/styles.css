@@ -1,0 +1,10 @@
+*{padding:0;
+margin:0}
+
+body{background:red;
+       background-image: url(../img/texto-pancarta-coctel_1308-113048.avif);
+              background-size: cover;
+       background-repeat: no-repeat;
+       background-position: center center;
+       background-attachment: fixed;}
+      
